@@ -17,8 +17,9 @@ type InGamePlayers = {
 export type Game = {
   id: number;
   players: InGamePlayers[];
-  winnerId?: number;
-  firstReligion?: number;
-  firstWar?: number;
-  firstTakenCity?: number;
+  winnerId: number;
+  firstReligion: number;
+  firstWar: number;
+  firstTakenCity: number;
+  closed: boolean;
 }
