@@ -1,7 +1,6 @@
 import React from 'react';
 import Titles from "./Titles";
-import OpenMatches from "./OpenMatches";
-import ClosedMatches from "./ClosedMatches";
+import OpenOrClosedMatches from "./OpenOrClosedMatches";
 import MainTable from "./MainTable";
 import { AppBar, Box, Button, Container, IconButton, Toolbar, Typography } from "@mui/material";
 import AdbIcon from '@mui/icons-material/Adb';
@@ -56,9 +55,9 @@ const MainNavBAr = () => {
       case 1:
         return <Titles/>
       case 2:
-        return <OpenMatches/>
+        return <OpenOrClosedMatches closed={ false }/>
       case 3:
-        return <ClosedMatches/>
+        return <OpenOrClosedMatches closed={ true }/>
       case 4:
         return <MainTable/>
       default:

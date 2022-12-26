@@ -1,4 +1,4 @@
-import { Player } from "../components/mainTypes";
+import { Player } from "../types/mainTypes";
 
 
 export const PlayerList: Player[] = [

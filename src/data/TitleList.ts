@@ -1,4 +1,4 @@
-import { Title } from "../components/mainTypes";
+import { Title } from "../types/mainTypes";
 
 
 export const TitleList: Title[] = [
@@ -21,4 +21,4 @@ export const TitleList: Title[] = [
     name: 'der Göttliche',
     playerId: 0,
     titleIsPrefix: false,
-  }]
+  } ]
