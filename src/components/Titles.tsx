@@ -1,6 +1,6 @@
 import { TitleList } from "../data/TitleList";
 import { getPlayerById } from "../helper/playerHelper";
-import { Title } from "./mainTypes";
+import { Title } from "../types/mainTypes";
 
 
 const Titles = () => {
