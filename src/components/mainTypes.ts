@@ -8,3 +8,9 @@ export type Title = {
   playerId: number;
   titleIsPrefix: boolean;
 }
+
+export type closedGame = {
+  id: number;
+  playerIds: number[];
+  winnerId: number;
+}
