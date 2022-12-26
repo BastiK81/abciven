@@ -14,9 +14,11 @@ type InGamePlayers = {
   civ: string;
 }
 
-export type closedGame = {
+export type Game = {
   id: number;
-  playerIds: InGamePlayers[];
-  winnerId: number;
-
+  players: InGamePlayers[];
+  winnerId?: number;
+  firstReligion?: number;
+  firstWar?: number;
+  firstTakenCity?: number;
 }
