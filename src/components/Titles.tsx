@@ -6,6 +6,9 @@ import { Title } from "./mainTypes";
 const Titles = () => {
 
   function createTitle(title: Title) {
+    if ( title.playerId === 0 ) {
+      return '';
+    }
     if ( title.titleIsPrefix ) {
       return `${ title.name } ${ getPlayerById(title.playerId).name }`;
     }
