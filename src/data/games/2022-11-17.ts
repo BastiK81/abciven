@@ -2,7 +2,7 @@ import { Game } from "../../types/mainTypes";
 
 export const Game20221117: Game = {
   id: 1,
-  date: [2022, 11, 17],
+  date: [ 2022, 11, 17 ],
   players: [
     {
       id: 1,
@@ -35,7 +35,7 @@ export const Game20221117: Game = {
       leader: 'Gitarja'
     }
   ],
-  Score: [
+  score: [
     {
       id: 1,
       name: 'Kultur',

@@ -1,4 +1,3 @@
-
 import { PlayerList } from "../data/PlayerList";
 import { Player } from "../types/mainTypes";
 

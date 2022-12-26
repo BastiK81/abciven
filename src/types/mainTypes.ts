@@ -9,7 +9,7 @@ export type Title = {
   titleIsPrefix: boolean;
 }
 
-type InGamePlayers = {
+export type InGamePlayers = {
   id: number;
   leader: string;
   civ: string;
@@ -20,7 +20,7 @@ type Positions = {
   position: number;
 }
 
-type Score = {
+export type Score = {
   id: number;
   name: string;
   positions: Positions[];
@@ -35,5 +35,5 @@ export type Game = {
   firstWar: number;
   firstTakenCity: number;
   closed: boolean;
-  Score: Score[];
+  score: Score[];
 }

@@ -21,4 +21,4 @@ export const TitleList: Title[] = [
     name: 'der Göttliche',
     playerId: 0,
     titleIsPrefix: false,
-  }]
+  } ]
