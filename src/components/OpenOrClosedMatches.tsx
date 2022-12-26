@@ -24,7 +24,7 @@ const OpenOrClosedMatches = (props: OpenOrClosedMatchesTypes) => {
 
   return (
     <>
-      <h2>Open Matches</h2>
+      <h2>Matches</h2>
 
       { openMatches.map((game) => {
         const bestPlayer: InGamePlayers = bestPlayerInGame(game);
