@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/abciven/static/css/main.e6c13ad2.css",
+    "main.js": "/abciven/static/js/main.9dc17815.js",
+    "index.html": "/abciven/index.html",
+    "main.e6c13ad2.css.map": "/abciven/static/css/main.e6c13ad2.css.map",
+    "main.9dc17815.js.map": "/abciven/static/js/main.9dc17815.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.9dc17815.js"
+  ]
+}
