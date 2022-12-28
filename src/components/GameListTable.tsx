@@ -1,4 +1,6 @@
-import { Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Fab, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import { bestInScore, readOutScore, setPlayerName } from "../helper/tableHelper";
 import { getPlayerById } from "../helper/playerHelper";
 import { Game, InGamePlayers } from "../types/mainTypes";
@@ -13,6 +15,14 @@ export type GameListTypes = {
 const GameListTable = (props: GameListTypes) => {
 
   const { game, bestPlayer, openGameId, handleChange } = props;
+
+  const bestOrWinningPlayer  = (): InGamePlayers => {
+    if ( game.winnerId !== 0 ) {
+      return game.players.filter((player) => player.id === game.winnerId)[0];
+    } else {
+      return bestPlayer;
+    }
+  }
 
   return (
     <TableContainer>
@@ -29,14 +39,23 @@ const GameListTable = (props: GameListTypes) => {
         </TableHead>
         <TableBody>
           <TableRow key={ game.id }>
-            <TableCell key={ game.id + 'bestPlayerName' }>{ setPlayerName(bestPlayer.id) }</TableCell>
-            <TableCell key={ game.id + 'bestPlayerLeader' }>{ bestPlayer.leader }</TableCell>
-            <TableCell key={ game.id + 'bestPlayerCiv' }>{ bestPlayer.civ }</TableCell>
+            <TableCell key={ game.id + 'bestPlayerName' }>{ setPlayerName(bestOrWinningPlayer().id) }</TableCell>
+            <TableCell key={ game.id + 'bestPlayerLeader' }>{ bestOrWinningPlayer().leader }</TableCell>
+            <TableCell key={ game.id + 'bestPlayerCiv' }>{ bestOrWinningPlayer().civ }</TableCell>
             { game.score.sort((a, b) => a.id - b.id).map((score) => (
               <TableCell>{ bestInScore(game.score, score.id) }</TableCell>
             )) }
             <TableCell key={ game.id + 'switch' }>
-              <Switch size={ 'small' } checked={ openGameId === game.id } onChange={ () => handleChange(game.id) }/>
+              {/*<Switch size={ 'small' } checked={ openGameId === game.id } onChange={ () => handleChange(game.id) }/>*/}
+              { openGameId !== game.id ? (
+              <Fab color="primary" aria-label="add" size={"small"} onClick={() => handleChange(game.id)}>
+                <AddIcon />
+              </Fab>
+              ) : (
+                <Fab color="primary" aria-label="Remove" size={"small"} onClick={() => handleChange(game.id)}>
+                  <RemoveIcon />
+                </Fab>
+                ) }
             </TableCell>
           </TableRow>
           {
