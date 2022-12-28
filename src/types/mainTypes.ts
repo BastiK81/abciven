@@ -52,7 +52,7 @@ export type PlayerStats = {
   firstWonder: number;
   firstWar: number;
   firstReligion: number;
-  firstTakenCitie: number;
+  firstTakenCity: number;
   scoreInCategories: ScoreInCategory[];
   totalScore: number;
 }

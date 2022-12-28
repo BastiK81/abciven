@@ -1,4 +1,4 @@
-import { Fab, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Fab, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { bestInScore, readOutScore, setPlayerName } from "../helper/tableHelper";
