@@ -15,15 +15,15 @@ export type InGamePlayers = {
   civ: string;
 }
 
-type Positions = {
+export type Position = {
   playerId: number;
   position: number;
 }
 
-export type Score = {
+export type Categories = {
   id: number;
   name: string;
-  positions: Positions[];
+  positions: Position[];
 }
 
 export type Game = {
@@ -34,6 +34,25 @@ export type Game = {
   firstReligion: number;
   firstWar: number;
   firstTakenCity: number;
+  firstWonder: number;
   closed: boolean;
-  score: Score[];
+  scoreCategory: Categories[];
+}
+
+export type ScoreInCategory = {
+  id: number;
+  name: string;
+  score: number;
+}
+
+export type PlayerStats = {
+  id: number;
+  name: string;
+  wins: number;
+  firstWonder: number;
+  firstWar: number;
+  firstReligion: number;
+  firstTakenCity: number;
+  scoreInCategories: ScoreInCategory[];
+  totalScore: number;
 }

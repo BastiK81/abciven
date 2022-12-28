@@ -1,7 +1,7 @@
-import { Game, InGamePlayers, Score } from "../types/mainTypes";
+import { Game, InGamePlayers, Categories } from "../types/mainTypes";
 import { getPlayerById } from "./playerHelper";
 
-export const readOutScore = (playerId: number, score: Score[], scoreId: number) => {
+export const readOutScore = (playerId: number, score: Categories[], scoreId: number) => {
   const scoreObject = score.find((score) => score.id === scoreId);
   if ( scoreObject ) {
     const position = scoreObject.positions.find(
@@ -14,7 +14,7 @@ export const readOutScore = (playerId: number, score: Score[], scoreId: number) 
   return 0;
 }
 
-export const bestInScore = (score: Score[], id: number): string => {
+export const bestInScore = (score: Categories[], id: number): string => {
   const positions = score.filter((score) => score.id === id)[ 0 ].positions
   if ( positions ) {
     const filteredPositions = positions.filter((position) => position.position === 1)
@@ -27,21 +27,24 @@ export const bestInScore = (score: Score[], id: number): string => {
 
 export const bestPlayerInGame = (game: Game): InGamePlayers => {
   const playerWithFirstPlaces: { player: InGamePlayers, firstPlaces: number }[] = []
-  game.players.map((player) => {
+  for ( let i = 0; i < game.players.length - 1; i ++ ) {
+    const player = game.players[ i ]
     let counter = 0;
-    game.score.map((score) => {
-      score.positions.map((position) => {
+    for ( let j = 0; j < game.scoreCategory.length - 1; j ++ ) {
+      const score = game.scoreCategory[ j ]
+      for ( let k = 0; k < score.positions.length - 1; k ++ ) {
+        const position = score.positions[ k ]
         if ( position.playerId === player.id ) {
           if ( position.position === 1 ) {
             counter ++
           }
         }
-      });
-    });
+      };
+    };
     if ( counter > 0 ) {
       playerWithFirstPlaces.push({ player, firstPlaces: counter })
     }
-  })
+  }
   const maxFirstPlaces =
     playerWithFirstPlaces.sort(
       (a, b) =>
