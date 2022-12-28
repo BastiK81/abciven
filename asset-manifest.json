@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/abciven/static/css/main.e6c13ad2.css",
-    "main.js": "/abciven/static/js/main.3945ef25.js",
+    "main.js": "/abciven/static/js/main.e3b8531b.js",
     "index.html": "/abciven/index.html",
     "main.e6c13ad2.css.map": "/abciven/static/css/main.e6c13ad2.css.map",
-    "main.3945ef25.js.map": "/abciven/static/js/main.3945ef25.js.map"
+    "main.e3b8531b.js.map": "/abciven/static/js/main.e3b8531b.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.3945ef25.js"
+    "static/js/main.e3b8531b.js"
   ]
 }
