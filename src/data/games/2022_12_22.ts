@@ -33,9 +33,10 @@ export const Game20221222: Game = {
   winnerId: 0,
   firstReligion: 1,
   firstWar: 1,
+  firstWonder: 0,
   firstTakenCity: 1,
   closed: false,
-  score: [
+  scoreCategory: [
     {
       id: 1,
       name: 'Kultur',

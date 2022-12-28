@@ -35,7 +35,7 @@ export const Game20221117: Game = {
       leader: 'Gitarja'
     }
   ],
-  score: [
+  scoreCategory: [
     {
       id: 1,
       name: 'Kultur',
@@ -192,5 +192,6 @@ export const Game20221117: Game = {
   firstReligion: 1,
   firstWar: 2,
   firstTakenCity: 2,
+  firstWonder: 0,
   closed: true,
 }

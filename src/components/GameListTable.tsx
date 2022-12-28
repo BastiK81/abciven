@@ -32,7 +32,7 @@ const GameListTable = (props: GameListTypes) => {
             <TableCell>Spieler</TableCell>
             <TableCell>Oberhaupt</TableCell>
             <TableCell>Civ</TableCell>
-            { game.score.sort((a, b) => a.id - b.id).map((score) => (
+            { game.scoreCategory.sort((a, b) => a.id - b.id).map((score) => (
               <TableCell key={ score.id }>{ score.name }</TableCell>
             )) }
           </TableRow>
@@ -42,8 +42,8 @@ const GameListTable = (props: GameListTypes) => {
             <TableCell key={ game.id + 'bestPlayerName' }>{ setPlayerName(bestOrWinningPlayer().id) }</TableCell>
             <TableCell key={ game.id + 'bestPlayerLeader' }>{ bestOrWinningPlayer().leader }</TableCell>
             <TableCell key={ game.id + 'bestPlayerCiv' }>{ bestOrWinningPlayer().civ }</TableCell>
-            { game.score.sort((a, b) => a.id - b.id).map((score) => (
-              <TableCell>{ bestInScore(game.score, score.id) }</TableCell>
+            { game.scoreCategory.sort((a, b) => a.id - b.id).map((score) => (
+              <TableCell>{ bestInScore(game.scoreCategory, score.id) }</TableCell>
             )) }
             <TableCell key={ game.id + 'switch' }>
               {/*<Switch size={ 'small' } checked={ openGameId === game.id } onChange={ () => handleChange(game.id) }/>*/}
@@ -67,11 +67,11 @@ const GameListTable = (props: GameListTypes) => {
                     <TableCell key={ game.id + '-' + player.id + 'PlayerLeader' }>{ player.leader }</TableCell>
                     <TableCell key={ game.id + '-' + player.id + 'PlayerCiv' }>{ player.civ }</TableCell>
                     {
-                      game.score.sort((a, b) => a.id - b.id).map((score) => (
+                      game.scoreCategory.sort((a, b) => a.id - b.id).map((score) => (
                         <TableCell
                           key={ game.id + '-' + player.id + 'PlayerScore' + score.id }
                         >
-                          { readOutScore(player.id, game.score, score.id) }
+                          { readOutScore(player.id, game.scoreCategory, score.id) }
                         </TableCell>
                       )) }
                   </TableRow>

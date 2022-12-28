@@ -31,11 +31,12 @@ export const Game20222212: Game = {
     }
   ],
   winnerId: 0,
+  firstWonder: 0,
   firstReligion: 3,
   firstWar: 0,
   firstTakenCity: 0,
   closed: false,
-  score: [
+  scoreCategory: [
     {
       id: 1,
       name: 'Kultur',
@@ -132,7 +133,7 @@ export const Game20222212: Game = {
           position: 1
         },
         {
-          playerId: 4,
+          playerId: 5,
           position: 5
         },
         {
@@ -184,7 +185,7 @@ export const Game20222212: Game = {
           position: 4
         },
         {
-          playerId: 4,
+          playerId: 5,
           position: 1
         },
         {
