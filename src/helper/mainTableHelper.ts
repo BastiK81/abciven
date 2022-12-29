@@ -1,18 +1,18 @@
 import { PlayerList } from "../data/PlayerList";
-import { Categories, Game, Player, PlayerStats, Position, ScoreInCategory } from "../types/mainTypes";
+import { Categories, Game, Player, PlayerStats, ScoreInCategory } from "../types/mainTypes";
 import { GameList } from "../data/GameList";
 
 const players = PlayerList;
 
 export const getAverageScoreById = ( scoreInCategories: ScoreInCategory[], number: number ) => {
-  const scoreItem: ScoreInCategory = scoreInCategories.filter((score) => score.id === number)[0]
+  const scoreItem: ScoreInCategory = scoreInCategories.filter( ( score ) => score.id === number )[0]
   if ( scoreItem ) {
-    return (scoreItem.score / scoreItem.count).toFixed(2);
+    return ( scoreItem.score / scoreItem.count ).toFixed( 2 );
   }
   return 0;
 }
 
-const emptyPlayerStats = (player: Player) : PlayerStats => {
+const emptyPlayerStats = ( player: Player ): PlayerStats => {
   return {
     name: player.name,
     id: player.id,
@@ -27,46 +27,55 @@ const emptyPlayerStats = (player: Player) : PlayerStats => {
   };
 }
 
-function calculateScoreValue(playerPositionInScore: number, numberOfPlayerWithPosition: number) {
-  if (playerPositionInScore > 5 || playerPositionInScore === 0 ) {
+export const calculateScoreValue = ( playerPositionInScore: number, numberOfPlayerWithPosition: number ) => {
+  if ( playerPositionInScore > 5 || playerPositionInScore === 0 ) {
     return 0;
   }
-  if (playerPositionInScore === 5) {
+  if ( playerPositionInScore === 5 ) {
     return 1;
   }
   switch ( playerPositionInScore + numberOfPlayerWithPosition - 1 ) {
-    case 1: return 5;
-    case 2: return 4;
-    case 3: return 3;
-    case 4: return 2;
-    case 5: return 1;
-    default: return 0;
+    case 1:
+      return 5;
+    case 2:
+      return 4;
+    case 3:
+      return 3;
+    case 4:
+      return 2;
+    case 5:
+      return 1;
+    default:
+      return 0;
   }
 }
 
-function playerIsInGame(player: Player, game: Game) {
-  return game.players.some((gamePlayer) => gamePlayer.id === player.id);
+function playerIsInGame( player: Player, game: Game ) {
+  return game.players.some( ( gamePlayer ) => gamePlayer.id === player.id );
 }
 
-function calculateTotalScore(playerStats: PlayerStats) {
+function calculateTotalScore( playerStats: PlayerStats ) {
   let totalScore =
-    (playerStats.wins/playerStats.gamesCount) +
-    (playerStats.firstConquest/playerStats.gamesCount) +
-    (playerStats.firstWar/playerStats.gamesCount) +
-    (playerStats.firstReligion/playerStats.gamesCount) +
-    (playerStats.firstWonder/playerStats.gamesCount);
-  for ( let i = 0; i < playerStats.scoreInCategories.length - 1; i ++ ) {
+    ( playerStats.wins / playerStats.gamesCount ) +
+    ( playerStats.firstConquest / playerStats.gamesCount ) +
+    ( playerStats.firstWar / playerStats.gamesCount ) +
+    ( playerStats.firstReligion / playerStats.gamesCount ) +
+    ( playerStats.firstWonder / playerStats.gamesCount );
+  for ( let i = 0; i < playerStats.scoreInCategories.length - 1; i++ ) {
     const scoreInCategory = playerStats.scoreInCategories[i];
-    totalScore = totalScore + scoreInCategory.score/scoreInCategory.count;
+    totalScore = totalScore + scoreInCategory.score / scoreInCategory.count;
   }
   return totalScore;
 }
 
-const getGamesByTrigger = (trigger: string): Game[] => {
+const getGamesByTrigger = ( trigger: string ): Game[] => {
   switch ( trigger ) {
-    case 'open':  return GameList.filter((game) => !game.closed);
-    case 'closed': return GameList.filter((game) => game.closed);
-    default: return GameList;
+    case 'open':
+      return GameList.filter( ( game ) => !game.closed );
+    case 'closed':
+      return GameList.filter( ( game ) => game.closed );
+    default:
+      return GameList;
   }
 }
 
@@ -90,11 +99,11 @@ function setStaticPoints( calculatedPlayerStats: PlayerStats, game: Game ) {
   return calculatedPlayerStats;
 }
 
-export const calculatePlayerStats = ( gamesTrigger: string): PlayerStats[] => {
+export const calculatePlayerStats = ( gamesTrigger: string ): PlayerStats[] => {
   const calculatedStats: PlayerStats[] = [] as PlayerStats[];
-  const games = getGamesByTrigger(gamesTrigger);
+  const games = getGamesByTrigger( gamesTrigger );
 
-  for ( let i = 0; i < players.length; i ++ ) {
+  for ( let i = 0; i < players.length; i++ ) {
     const player = players[i];
     const calculatedScoreInCategories: ScoreInCategory[] = [];
     let calculatedPlayerStats: PlayerStats = emptyPlayerStats( player );
@@ -115,7 +124,8 @@ export const calculatePlayerStats = ( gamesTrigger: string): PlayerStats[] => {
           if ( presentCalculatedScoreInCategory ) {
             presentCalculatedScoreInCategory.score = presentCalculatedScoreInCategory.score + categoryScoreValue;
             presentCalculatedScoreInCategory.count = presentCalculatedScoreInCategory.count + 1;
-          } else {
+          }
+          else {
             const playerScore: ScoreInCategory = {
               score: categoryScoreValue,
               name: scoreCategory.name,

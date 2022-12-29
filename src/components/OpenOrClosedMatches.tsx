@@ -8,17 +8,18 @@ type OpenOrClosedMatchesTypes = {
   closed: boolean;
 }
 
-const OpenOrClosedMatches = (props: OpenOrClosedMatchesTypes) => {
+const OpenOrClosedMatches = ( props: OpenOrClosedMatchesTypes ) => {
 
-  const [ openGameId, setOpenGameId ] = useState<number>(0);
+  const [ openGameId, setOpenGameId ] = useState<number>( 0 );
 
-  const openMatches = GameList.filter((game) => game.closed === props.closed);
+  const openMatches = GameList.filter( ( game ) => game.closed === props.closed );
 
-  function handleChange(id: number) {
+  function handleChange( id: number ) {
     if ( openGameId === id ) {
-      setOpenGameId(0);
-    } else {
-      setOpenGameId(id);
+      setOpenGameId( 0 );
+    }
+    else {
+      setOpenGameId( id );
     }
   }
 
@@ -26,9 +27,8 @@ const OpenOrClosedMatches = (props: OpenOrClosedMatchesTypes) => {
     <>
       <h2>Matches</h2>
 
-      { openMatches.map((game) => {
-        const bestPlayer: InGamePlayers = bestPlayerInGame(game);
-        console.log('bestPlayer', bestPlayer);
+      { openMatches.map( ( game ) => {
+        const bestPlayer: InGamePlayers = bestPlayerInGame( game );
         return (
           <GameListTable
             key={ game.id }
@@ -36,8 +36,8 @@ const OpenOrClosedMatches = (props: OpenOrClosedMatchesTypes) => {
             bestPlayer={ bestPlayer }
             openGameId={ openGameId }
             handleChange={ handleChange }
-          />)
-      }) }
+          /> )
+      } ) }
     </>
   );
 };
