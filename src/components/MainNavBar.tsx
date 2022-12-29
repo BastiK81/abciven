@@ -34,23 +34,23 @@ const pages: Pages[] = [
 
 const MainNavBAr = () => {
 
-  const [ anchorElNav, setAnchorElNav ] = React.useState<null | HTMLElement>(null);
-  const [ navState, setNavState ] = React.useState(0);
+  const [ anchorElNav, setAnchorElNav ] = React.useState<null | HTMLElement>( null );
+  const [ navState, setNavState ] = React.useState( 0 );
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
+  const handleOpenNavMenu = ( event: React.MouseEvent<HTMLElement> ) => {
+    setAnchorElNav( event.currentTarget );
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setAnchorElNav( null );
   };
 
-  const handleNavClick = (navState: number) => {
-    setNavState(navState);
+  const handleNavClick = ( navState: number ) => {
+    setNavState( navState );
     handleCloseNavMenu();
   }
 
-  function showPageByNavState(navState: number) {
+  function showPageByNavState( navState: number ) {
     switch ( navState ) {
       case 1:
         return <Titles/>
@@ -112,17 +112,17 @@ const MainNavBAr = () => {
                   vertical: 'top',
                   horizontal: 'left',
                 } }
-                open={ Boolean(anchorElNav) }
+                open={ Boolean( anchorElNav ) }
                 onClose={ handleCloseNavMenu }
                 sx={ {
                   display: { xs: 'block', md: 'none' },
                 } }
               >
-                { pages.map((page) => (
-                  <MenuItem key={ page.name } onClick={ () => handleNavClick(page.state) }>
+                { pages.map( ( page ) => (
+                  <MenuItem key={ page.name } onClick={ () => handleNavClick( page.state ) }>
                     <Typography textAlign="center">{ page.name }</Typography>
                   </MenuItem>
-                )) }
+                ) ) }
               </Menu>
             </Box>
             <AdbIcon sx={ { display: { xs: 'flex', md: 'none' }, mr: 1 } }/>
@@ -145,22 +145,22 @@ const MainNavBAr = () => {
               LOGO
             </Typography>
             <Box sx={ { flexGrow: 1, display: { xs: 'none', md: 'flex' } } }>
-              { pages.map((page) => (
+              { pages.map( ( page ) => (
                 <Button
                   key={ page.name }
-                  onClick={ () => handleNavClick(page.state) }
+                  onClick={ () => handleNavClick( page.state ) }
                   sx={ { my: 2, color: 'white', display: 'block' } }
                 >
                   { page.name }
                 </Button>
-              )) }
+              ) ) }
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
       <>
         <Container maxWidth="xl">
-          { showPageByNavState(navState) }
+          { showPageByNavState( navState ) }
         </Container>
       </>
     </Container>
