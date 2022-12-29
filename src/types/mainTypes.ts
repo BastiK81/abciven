@@ -43,16 +43,18 @@ export type ScoreInCategory = {
   id: number;
   name: string;
   score: number;
+  count: number;
 }
 
 export type PlayerStats = {
   id: number;
+  gamesCount: number;
   name: string;
   wins: number;
   firstWonder: number;
   firstWar: number;
   firstReligion: number;
-  firstTakenCity: number;
+  firstConquest: number;
   scoreInCategories: ScoreInCategory[];
   totalScore: number;
 }
