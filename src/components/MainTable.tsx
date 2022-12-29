@@ -5,7 +5,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { getPlayerStats, getScoreById } from "../helper/mainTableHelper";
+import { calculatePlayerStats, getAverageScoreById } from "../helper/mainTableHelper";
 
 const MainTable = () => {
 
@@ -39,8 +39,8 @@ const MainTable = () => {
             <TableCell align="right">Siege</TableCell>
             <TableCell align="right">erste Relegion</TableCell>
             <TableCell align="right">erstes Weltwunder</TableCell>
-            <TableCell align="right">erste Kriege</TableCell>
-            <TableCell align="right">erste Städteeroberung</TableCell>
+            <TableCell align="right">erster Krieg</TableCell>
+            <TableCell align="right">erste Eroberung</TableCell>
             <TableCell align="right">Kultur</TableCell>
             <TableCell align="right">Religion</TableCell>
             <TableCell align="right">Herrschaft</TableCell>
@@ -52,22 +52,22 @@ const MainTable = () => {
           </TableRow>
           </TableHead>
           <TableBody>
-            {getPlayerStats(value).sort((a, b) => b.totalScore - a.totalScore).map((playerStats) => (
+            {calculatePlayerStats(value).sort(( a, b) => b.totalScore - a.totalScore).map(( playerStats) => (
               <TableRow key={playerStats.id}>
                 <TableCell align="left">{playerStats.name}</TableCell>
-                <TableCell align="right">{playerStats.wins}</TableCell>
-                <TableCell align="right">{playerStats.firstReligion}</TableCell>
-                <TableCell align="right">{playerStats.firstWonder}</TableCell>
-                <TableCell align="right">{playerStats.firstWar}</TableCell>
-                <TableCell align="right">{playerStats.firstTakenCity}</TableCell>
-                <TableCell align="right">{ getScoreById( playerStats.scoreInCategories, 1 ) }</TableCell>
-                <TableCell align="right">{ getScoreById( playerStats.scoreInCategories, 2 ) }</TableCell>
-                <TableCell align="right">{ getScoreById( playerStats.scoreInCategories, 3 ) }</TableCell>
-                <TableCell align="right">{ getScoreById( playerStats.scoreInCategories, 4 ) }</TableCell>
-                <TableCell align="right">{ getScoreById( playerStats.scoreInCategories, 5 ) }</TableCell>
-                <TableCell align="right">{ getScoreById( playerStats.scoreInCategories, 6 ) }</TableCell>
-                <TableCell align="right">{ getScoreById( playerStats.scoreInCategories, 7 ) }</TableCell>
-                <TableCell align="right">{playerStats.totalScore}</TableCell>
+                <TableCell align="right">{(playerStats.wins/playerStats.gamesCount).toFixed(2)}</TableCell>
+                <TableCell align="right">{(playerStats.firstReligion/playerStats.gamesCount).toFixed(2)}</TableCell>
+                <TableCell align="right">{(playerStats.firstWonder/playerStats.gamesCount).toFixed(2)}</TableCell>
+                <TableCell align="right">{(playerStats.firstWar/playerStats.gamesCount).toFixed(2)}</TableCell>
+                <TableCell align="right">{(playerStats.firstConquest/playerStats.gamesCount).toFixed(2)}</TableCell>
+                <TableCell align="right">{ getAverageScoreById( playerStats.scoreInCategories, 1 ) }</TableCell>
+                <TableCell align="right">{ getAverageScoreById( playerStats.scoreInCategories, 2 ) }</TableCell>
+                <TableCell align="right">{ getAverageScoreById( playerStats.scoreInCategories, 3 ) }</TableCell>
+                <TableCell align="right">{ getAverageScoreById( playerStats.scoreInCategories, 4 ) }</TableCell>
+                <TableCell align="right">{ getAverageScoreById( playerStats.scoreInCategories, 5 ) }</TableCell>
+                <TableCell align="right">{ getAverageScoreById( playerStats.scoreInCategories, 6 ) }</TableCell>
+                <TableCell align="right">{ getAverageScoreById( playerStats.scoreInCategories, 7 ) }</TableCell>
+                <TableCell align="right">{playerStats.totalScore.toFixed(2)}</TableCell>
               </TableRow>
             ))}
           </TableBody>
