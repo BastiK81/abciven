@@ -20,7 +20,7 @@ export type Position = {
   position: number;
 }
 
-export type Categories = {
+export type Category = {
   id: number;
   name: string;
   positions: Position[];
@@ -35,8 +35,8 @@ export type Game = {
   firstWar: number;
   firstTakenCity: number;
   firstWonder: number;
-  closed: boolean;
-  scoreCategory: Categories[];
+  closed: number;
+  categories: Category[];
 }
 
 export type ScoreInCategory = {

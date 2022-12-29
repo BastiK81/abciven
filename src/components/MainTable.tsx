@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import { calculatePlayerStats, getAverageScoreById } from "../helper/mainTableHelper";
+import RadioButtonGameChoice from "./RadioButtonGameChoice";
 
 const MainTable = () => {
 
@@ -18,20 +14,9 @@ const MainTable = () => {
   return (
     <>
       <h2>Tabelle</h2>
-      <FormControl>
-        <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-        <RadioGroup
-          row
-          aria-labelledby="demo-row-radio-buttons-group-label"
-          name="row-radio-buttons-group"
-          value={ value }
-          onChange={ handleChange }
-        >
-          <FormControlLabel value="all" control={ <Radio/> } label="All"/>
-          <FormControlLabel value="closed" control={ <Radio/> } label="Closed"/>
-          <FormControlLabel value="open" control={ <Radio/> } label="Open"/>
-        </RadioGroup>
-      </FormControl>
+
+      <RadioButtonGameChoice value={ value } handleChange={ handleChange }/>
+
       <Table size={ "small" }>
         <TableHead>
           <TableRow>

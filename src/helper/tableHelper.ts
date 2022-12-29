@@ -1,11 +1,10 @@
-import { Categories, Game, InGamePlayers } from "../types/mainTypes";
+import { Category, Game, InGamePlayers } from "../types/mainTypes";
 import { getPlayerById } from "./playerHelper";
 import { calculateScoreValue } from "./mainTableHelper";
 
 
-
-export const calculateScoreOfCategoryWithRank = ( categories: Categories[], playerPosition: number, categoryId: number ) => {
-  if (playerPosition === 0) {
+export const calculateScoreOfCategoryWithRank = ( categories: Category[], playerPosition: number, categoryId: number ) => {
+  if ( playerPosition === 0 ) {
     return 0;
   }
   const category = categories.find( ( category ) => category.id === categoryId );
@@ -15,7 +14,7 @@ export const calculateScoreOfCategoryWithRank = ( categories: Categories[], play
   return 0;
 }
 
-export const readPositionOutOfCategory = ( playerId: number, categories: Categories[], categoryId: number ) => {
+export const readPositionOutOfCategory = ( playerId: number, categories: Category[], categoryId: number ) => {
   const category = categories.find( ( category ) => category.id === categoryId );
   if ( category ) {
     const position = category.positions.find(
@@ -28,14 +27,14 @@ export const readPositionOutOfCategory = ( playerId: number, categories: Categor
   return 0;
 }
 
-export const generateCategoryValue = (playerId: number, categories: Categories[], categoryId: number) => {
+export const generateCategoryValue = ( playerId: number, categories: Category[], categoryId: number ) => {
   const rankInCategory = readPositionOutOfCategory( playerId, categories, categoryId )
   const scoreInCategory = calculateScoreOfCategoryWithRank( categories, rankInCategory, categoryId );
-  return `${rankInCategory} / ${scoreInCategory}`;
+  return `${ rankInCategory } / ${ scoreInCategory }`;
 }
 
-export const bestInScore = ( score: Categories[], id: number ): string => {
-  const positions = score.filter( ( score ) => score.id === id )[0].positions
+export const bestInScore = ( categories: Category[], id: number ): string => {
+  const positions = categories.filter( ( category ) => category.id === id )[0].positions
   if ( positions ) {
     const filteredPositions = positions.filter( ( position ) => position.position === 1 )
     if ( filteredPositions.length === 1 ) {
@@ -49,7 +48,7 @@ export const countPlayersFirstPlaces = ( game: Game ): { player: InGamePlayers, 
   const playerWithFirstPlaces: { player: InGamePlayers, firstPlaces: number }[] = []
   for ( let i = 0; i < game.players.length; i++ ) {
     const player = game.players[i]
-    let counter = game.scoreCategory.filter( ( score ) => score.positions.filter( ( position ) => position.playerId === player.id && position.position === 1 ).length > 0 ).length
+    let counter = game.categories.filter( ( category ) => category.positions.filter( ( position ) => position.playerId === player.id && position.position === 1 ).length > 0 ).length
     if ( counter > 0 ) {
       playerWithFirstPlaces.push( { player, firstPlaces: counter } )
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Titles from "./Titles";
-import OpenOrClosedMatches from "./OpenOrClosedMatches";
+import Matches from "./Matches";
 import MainTable from "./MainTable";
 import { AppBar, Box, Button, Container, IconButton, Toolbar, Typography } from "@mui/material";
 import AdbIcon from '@mui/icons-material/Adb';
@@ -20,16 +20,12 @@ const pages: Pages[] = [
     state: 1
   },
   {
-    name: 'Offene Spiele',
+    name: 'Spiele',
     state: 2
   },
   {
-    name: 'Geschlossene Spiele',
-    state: 3
-  },
-  {
     name: 'Tabelle',
-    state: 4
+    state: 3
   } ];
 
 const MainNavBAr = () => {
@@ -55,10 +51,8 @@ const MainNavBAr = () => {
       case 1:
         return <Titles/>
       case 2:
-        return <OpenOrClosedMatches closed={ false }/>
+        return <Matches/>
       case 3:
-        return <OpenOrClosedMatches closed={ true }/>
-      case 4:
         return <MainTable/>
       default:
         return <>Nothing</>

@@ -34,7 +34,7 @@ const GameListTable = ( props: GameListTypes ) => {
             <TableCell key={ 'headerPlayer' + game.id }>Spieler</TableCell>
             <TableCell key={ 'headerLeader' + game.id }>Oberhaupt</TableCell>
             <TableCell key={ 'headerCiv' + game.id }>Civ</TableCell>
-            { game.scoreCategory.sort( ( a, b ) => a.id - b.id ).map( ( score ) => (
+            { game.categories.sort( ( a, b ) => a.id - b.id ).map( ( score ) => (
               <TableCell key={ 'header' + game.id + score.id }>{ score.name }</TableCell>
             ) ) }
           </TableRow>
@@ -45,8 +45,8 @@ const GameListTable = ( props: GameListTypes ) => {
             <TableCell key={ game.id + 'bestPlayerName' }>{ setPlayerName( bestOrWinningPlayer().id ) }</TableCell>
             <TableCell key={ game.id + 'bestPlayerLeader' }>{ bestOrWinningPlayer().leader }</TableCell>
             <TableCell key={ game.id + 'bestPlayerCiv' }>{ bestOrWinningPlayer().civ }</TableCell>
-            { game.scoreCategory.sort( ( a, b ) => a.id - b.id ).map( ( score ) => (
-              <TableCell key={ 'bestInCategory' + game.id + score.id }>{ bestInScore( game.scoreCategory, score.id ) }</TableCell>
+            { game.categories.sort( ( a, b ) => a.id - b.id ).map( ( category ) => (
+              <TableCell key={ 'bestInCategory' + game.id + category.id }>{ bestInScore( game.categories, category.id ) }</TableCell>
             ) ) }
             <TableCell key={ game.id + 'switch' }>
               { openGameId !== game.id ? (
@@ -70,11 +70,11 @@ const GameListTable = ( props: GameListTypes ) => {
                     <TableCell key={ game.id + '-' + player.id + 'PlayerLeader' }>{ player.leader }</TableCell>
                     <TableCell key={ game.id + '-' + player.id + 'PlayerCiv' }>{ player.civ }</TableCell>
                     {
-                      game.scoreCategory.sort( ( a, b ) => a.id - b.id ).map( ( score ) => (
+                      game.categories.sort( ( a, b ) => a.id - b.id ).map( ( category ) => (
                         <TableCell
-                          key={ game.id + '-' + player.id + 'PlayerScore' + score.id }
+                          key={ game.id + '-' + player.id + 'PlayerScore' + category.id }
                         >
-                          { generateCategoryValue(player.id, game.scoreCategory, score.id) }
+                          { generateCategoryValue( player.id, game.categories, category.id ) }
                         </TableCell>
                       ) ) }
                   </TableRow>
