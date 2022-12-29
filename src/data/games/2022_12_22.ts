@@ -35,8 +35,8 @@ export const Game20221222: Game = {
   firstWar: 1,
   firstWonder: 0,
   firstTakenCity: 1,
-  closed: false,
-  scoreCategory: [
+  closed: 0,
+  categories: [
     {
       id: 1,
       name: 'Kultur',

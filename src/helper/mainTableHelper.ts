@@ -1,5 +1,5 @@
 import { PlayerList } from "../data/PlayerList";
-import { Categories, Game, Player, PlayerStats, ScoreInCategory } from "../types/mainTypes";
+import { Category, Game, Player, PlayerStats, ScoreInCategory } from "../types/mainTypes";
 import { GameList } from "../data/GameList";
 
 const players = PlayerList;
@@ -68,12 +68,12 @@ function calculateTotalScore( playerStats: PlayerStats ) {
   return totalScore;
 }
 
-const getGamesByTrigger = ( trigger: string ): Game[] => {
+export const getGamesByTrigger = ( trigger: string ): Game[] => {
   switch ( trigger ) {
     case 'open':
-      return GameList.filter( ( game ) => !game.closed );
+      return GameList.filter( ( game ) => game.closed === 0 );
     case 'closed':
-      return GameList.filter( ( game ) => game.closed );
+      return GameList.filter( ( game ) => game.closed === 1 );
     default:
       return GameList;
   }
@@ -113,26 +113,26 @@ export const calculatePlayerStats = ( gamesTrigger: string ): PlayerStats[] => {
 
       if ( playerIsInGame( player, game ) ) {
         calculatedPlayerStats = setStaticPoints( calculatedPlayerStats, game );
-        for ( let k = 0; k < game.scoreCategory.length; k++ ) {
-          const scoreCategory: Categories = game.scoreCategory[k];
+        for ( let k = 0; k < game.categories.length; k++ ) {
+          const category: Category = game.categories[k];
 
-          const playerPositionInCategory = scoreCategory.positions.filter( ( position ) => position.playerId === player.id )[0].position;
-          const numberOfPlayerWithPosition = scoreCategory.positions.filter( ( position ) => position.position === playerPositionInCategory ).length;
+          const playerPositionInCategory = category.positions.filter( ( position ) => position.playerId === player.id )[0].position;
+          const numberOfPlayerWithPosition = category.positions.filter( ( position ) => position.position === playerPositionInCategory ).length;
           const categoryScoreValue = calculateScoreValue( playerPositionInCategory, numberOfPlayerWithPosition );
 
-          const presentCalculatedScoreInCategory = calculatedScoreInCategories.filter( ( scoreInCategory ) => scoreInCategory.id === scoreCategory.id )[0];
+          const presentCalculatedScoreInCategory = calculatedScoreInCategories.filter( ( scoreInCategory ) => scoreInCategory.id === category.id )[0];
           if ( presentCalculatedScoreInCategory ) {
             presentCalculatedScoreInCategory.score = presentCalculatedScoreInCategory.score + categoryScoreValue;
             presentCalculatedScoreInCategory.count = presentCalculatedScoreInCategory.count + 1;
           }
           else {
-            const playerScore: ScoreInCategory = {
+            const playerScoreInCategory: ScoreInCategory = {
               score: categoryScoreValue,
-              name: scoreCategory.name,
-              id: scoreCategory.id,
+              name: category.name,
+              id: category.id,
               count: 1,
             }
-            calculatedScoreInCategories.push( playerScore );
+            calculatedScoreInCategories.push( playerScoreInCategory );
           }
           calculatedPlayerStats.scoreInCategories = calculatedScoreInCategories;
         }
