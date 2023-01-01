@@ -99,9 +99,8 @@ function setStaticPoints( calculatedPlayerStats: PlayerStats, game: Game ) {
   return calculatedPlayerStats;
 }
 
-export const calculatePlayerStats = ( gamesTrigger: string ): PlayerStats[] => {
+export const calculatePlayerStats = ( games: Game[] ): PlayerStats[] => {
   const calculatedStats: PlayerStats[] = [] as PlayerStats[];
-  const games = getGamesByTrigger( gamesTrigger );
 
   for ( let i = 0; i < players.length; i++ ) {
     const player = players[i];
