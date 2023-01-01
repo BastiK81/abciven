@@ -7,10 +7,10 @@ import * as React from "react";
 
 type RadioButtonGameChoiceTypes = {
   value: string;
-  handleChange: ( event: React.ChangeEvent<HTMLInputElement> ) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const RadioButtonGameChoice = ( props: RadioButtonGameChoiceTypes ) => {
+const RadioButtonGameChoice = (props: RadioButtonGameChoiceTypes) => {
 
   return (
     <FormControl>
