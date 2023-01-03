@@ -11,13 +11,13 @@ export const Game20230103: Game = {
     },
     {
       id: 2,
-      civ: '',
-      leader: ''
+      civ: 'Russisches Reich',
+      leader: 'Peter'
     },
 {
       id: 3,
-      civ: '',
-      leader: ''
+      civ: 'Macedonien',
+      leader: 'Alexander'
 },
 {
       id: 6,
