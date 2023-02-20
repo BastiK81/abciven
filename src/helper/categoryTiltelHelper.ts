@@ -6,16 +6,16 @@ const HIGHEST_TECHNOLOGICAL_TITLE = 'der Allwissende';
 const LAST_TECHNOLOGICAL_TITLE = 'der Erfinder';
 const HIGHEST_CULTURAL_TITLE = 'der Kulturbanause';
 const LAST_CULTURAL_TITLE = 'der Ansehnliche';
-const HIGHEST_MILITARY_TITLE = 'der Oberste Kriegsherr';
+const HIGHEST_MILITARY_TITLE = 'Oberster Kriegsherr';
 const LAST_MILITARY_TITLE = 'General';
 const HIGHEST_RELIGION_TITLE = 'der Gottesfürchtige';
-const LAST_RELIGION_TITLE = 'Ach du Heilige';
+const LAST_RELIGION_TITLE = 'Ach du Heiliger';
 const HIGHEST_TERRITORY_TITLE = 'der Besitzergreifende'
 const LAST_TERRITORY_TITLE = 'der Expandierende'
 const HIGHEST_SCORE_TITLE = 'Topscorer'
 const LAST_SCORE_TITLE = 'der Abstauber'
-const HIGHEST_DIPLOMACY_TITLE = 'der Diplomat'
-const LAST_DIPLOMACY_TITLE = 'der Verhandlungsführer'
+const HIGHEST_DIPLOMACY_TITLE = 'Meister des Kompromisses'
+const LAST_DIPLOMACY_TITLE = 'der Verhandlungskünstler'
 
 export const getHighestDiplomacy = () => {
   let playerName: string = '';
@@ -189,7 +189,7 @@ export const getHighestMilitary = () => {
     const findName = PlayerList.find(player => player.id === highestMilitaryList[0].id);
     playerName = findName ? findName.name : '';
   })
-  return `${playerName} ${HIGHEST_MILITARY_TITLE}`;
+  return `${HIGHEST_MILITARY_TITLE} ${playerName} `;
 }
 export const getLastMilitary = () => {
   let playerName = ''

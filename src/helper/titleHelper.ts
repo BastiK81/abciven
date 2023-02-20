@@ -1,16 +1,16 @@
 import { GameList } from "../data/GameList";
 import { PlayerList } from "../data/PlayerList";
 
-const HIGHEST_WAR_MANAGER_TITLE = "Oberster Kriegstreiber";
-const LAST_WAR_MANAGER_TITLE = "Letzter Kriegstreiber";
+const HIGHEST_WAR_MANAGER_TITLE = "der Konfliktbereite";
+const LAST_WAR_MANAGER_TITLE = "Kriegsverfechter";
 const HIGHEST_RELIGIOUS_TITLE = "der Göttliche";
 const LAST_RELIGIOUS_TITLE = "Erster Prophet";
-const HIGHEST_WONDER_TITLE = "der Erbauer aller Wunder";
-const LAST_WONDER_TITLE = "der wundersame";
+const HIGHEST_WONDER_TITLE = "Baumeister der Wunder";
+const LAST_WONDER_TITLE = "Titan der modernen Baukunst";
 const HIGHEST_EMPEROR_TITLE = "der Erorberer";
-const LAST_EMPEROR_TITLE = "der letzte Kreuzzügler";
-const HIGHEST_WINNER_TITLE = "der Absolute Sieger";
-const LAST_WINNER_TITLE = "der Letzte Sieger";
+const LAST_EMPEROR_TITLE = "Erster Kreuzfahrer";
+const HIGHEST_WINNER_TITLE = "the Winning Machine";
+const LAST_WINNER_TITLE = "der letzte Triumphator";
 
 export const allPlayerIds = PlayerList.map(player => player.id);
 export const lastGameList = GameList.sort(( a, b) => {
@@ -25,6 +25,27 @@ export const lastGameList = GameList.sort(( a, b) => {
   }
   return 0;
 })
+
+export const getHighestWarManagerTitle = (): string => {
+  let playerName: string = '';
+  const highestWarManagerList: {id: number, counter: number}[] = allPlayerIds.map(id => {
+    return {id, counter: 0};
+  })
+  GameList.forEach(game => {
+    if (game.firstWar) {
+      const index = highestWarManagerList.findIndex(player => player.id === game.firstWar);
+      highestWarManagerList[index].counter++;
+    }
+    highestWarManagerList.sort((a, b) => b.counter - a.counter);
+    const findName = PlayerList.find(player => player.id === highestWarManagerList[0].id);
+    playerName = findName ? findName.name : '';
+  })
+  return `${playerName} ${HIGHEST_WAR_MANAGER_TITLE}`;
+}
+export const getLastWarManagerTitle = (): string => {
+  const findName = PlayerList.find(player => player.id === lastGameList[0].firstWar);
+  return `${LAST_WAR_MANAGER_TITLE} ${findName ? findName.name : ''}`;
+}
 
 export const getHighestEmperorTitle = (): string => {
   let playerName: string = '';
@@ -44,7 +65,7 @@ export const getHighestEmperorTitle = (): string => {
 }
 export const getLastEmperorTitle = (): string => {
   const findName = PlayerList.find(player => player.id === lastGameList[0].firstTakenCity);
-  return `${findName ? findName.name : ''} ${LAST_EMPEROR_TITLE}`;
+  return `${LAST_EMPEROR_TITLE} ${findName ? findName.name : ''}`;
 }
 
 export const getHighestWonderTitle = (): string => {
@@ -87,27 +108,6 @@ export const getHighestReligiousTitle = (): string => {
 export const getLastReligiousTitle = (): string => {
   const findName = PlayerList.find(player => player.id === lastGameList[0].firstReligion);
   return `${LAST_RELIGIOUS_TITLE} ${findName ? findName.name : ''}`;
-}
-
-export const getHighestWarManagerTitle = (): string => {
-  let playerName: string = '';
-  const highestWarManagerList: {id: number, counter: number}[] = allPlayerIds.map(id => {
-    return {id, counter: 0};
-  })
-  GameList.forEach(game => {
-    if (game.firstWar) {
-      const index = highestWarManagerList.findIndex(player => player.id === game.firstWar);
-      highestWarManagerList[index].counter++;
-    }
-    highestWarManagerList.sort((a, b) => b.counter - a.counter);
-    const findName = PlayerList.find(player => player.id === highestWarManagerList[0].id);
-    playerName = findName ? findName.name : '';
-  })
-  return `${HIGHEST_WAR_MANAGER_TITLE} ${playerName}`;
-}
-export const getLastWarManagerTitle = (): string => {
-  const findName = PlayerList.find(player => player.id === lastGameList[0].firstWar);
-  return `${LAST_WAR_MANAGER_TITLE} ${findName ? findName.name : ''}`;
 }
 
 export const getHighestWinnerTitle = (): string => {
