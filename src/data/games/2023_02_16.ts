@@ -1,41 +1,36 @@
 import { Game } from "../../types/mainTypes";
 
-export const Game20221208: Game = {
-  id: 2,
-  date: [ 2022, 12, 8 ],
+export const Game20230216: Game = {
+  id: 5,
+  date: [ 2023, 2, 16 ],
   players: [
     {
       id: 1,
-      civ: 'Inka',
-      leader: 'Pachacutec'
+      civ: 'England',
+      leader: 'Eleonora'
     },
     {
       id: 2,
-      civ: 'Römisches Reich',
-      leader: 'Trajan'
-    },
-    {
-      id: 6,
-      civ: 'Korea',
-      leader: 'Seondeok'
+      civ: 'Kanada',
+      leader: 'Wilfrid Laurier'
     },
     {
       id: 3,
-      civ: 'Arabien',
-      leader: 'Saladin (Sultan)'
+      civ: 'Norwegen',
+      leader: 'Harald '
     },
     {
-      id: 5,
-      civ: 'Griechenland',
-      leader: 'Gorgo'
+      id: 6,
+      civ: 'Kongolesisches Reich',
+      leader: ''
     }
   ],
-  winnerId: 0,
-  firstWonder: 0,
+  winnerId: 3,
   firstReligion: 3,
-  firstWar: 0,
-  firstTakenCity: 0,
-  closed: 0,
+  firstWar: 1,
+  firstWonder: 6,
+  firstTakenCity: 3,
+  closed: 1,
   categories: [
     {
       id: 1,
@@ -43,25 +38,21 @@ export const Game20221208: Game = {
       positions: [
         {
           playerId: 1,
-          position: 4
+          position: 2
         },
         {
           playerId: 2,
-          position: 3
+          position: 4
         },
         {
           playerId: 3,
           position: 2
         },
-        {
-          playerId: 5,
-          position: 1
-        },
+
         {
           playerId: 6,
-          position: 5
+          position: 1
         }
-
       ]
     },
     {
@@ -70,23 +61,20 @@ export const Game20221208: Game = {
       positions: [
         {
           playerId: 1,
-          position: 4
+          position: 2
         },
         {
           playerId: 2,
-          position: 2
+          position: 3
         },
         {
           playerId: 3,
           position: 1
         },
-        {
-          playerId: 5,
-          position: 2
-        },
+
         {
           playerId: 6,
-          position: 5
+          position: 0
         }
       ]
     },
@@ -107,10 +95,6 @@ export const Game20221208: Game = {
           position: 1
         },
         {
-          playerId: 5,
-          position: 1
-        },
-        {
           playerId: 6,
           position: 1
         }
@@ -122,23 +106,19 @@ export const Game20221208: Game = {
       positions: [
         {
           playerId: 1,
-          position: 4
-        },
-        {
-          playerId: 2,
-          position: 3
-        },
-        {
-          playerId: 3,
           position: 1
         },
         {
-          playerId: 5,
-          position: 5
+          playerId: 2,
+          position: 2
+        },
+        {
+          playerId: 3,
+          position: 2
         },
         {
           playerId: 6,
-          position: 2
+          position: 4
         }
       ]
     },
@@ -156,15 +136,11 @@ export const Game20221208: Game = {
         },
         {
           playerId: 3,
-          position: 4
-        },
-        {
-          playerId: 5,
           position: 1
         },
         {
           playerId: 6,
-          position: 5
+          position: 4
         }
       ]
     },
@@ -174,25 +150,43 @@ export const Game20221208: Game = {
       positions: [
         {
           playerId: 1,
+          position: 3
+        },
+        {
+          playerId: 2,
+          position: 1
+        },
+        {
+          playerId: 3,
+          position: 2
+        },
+        {
+          playerId: 6,
+          position: 4
+        }
+      ]
+    },
+    {
+      id: 7,
+      name: 'Diplomatie',
+      positions: [
+        {
+          playerId: 1,
           position: 2
         },
         {
           playerId: 2,
-          position: 3
-        },
-        {
-          playerId: 3,
           position: 4
         },
         {
-          playerId: 5,
+          playerId: 3,
           position: 1
         },
         {
           playerId: 6,
-          position: 5
+          position: 2
         }
       ]
-    }
-  ],
+    },
+  ]
 }

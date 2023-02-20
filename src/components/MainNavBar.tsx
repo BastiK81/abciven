@@ -61,7 +61,9 @@ const MainNavBAr = () => {
           key={ 'mainTable' }
         />
       default:
-        return <>Nothing</>
+        return <Titles
+          key={ 'titles' }
+        />
     }
   }
 

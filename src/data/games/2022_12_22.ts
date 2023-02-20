@@ -33,9 +33,9 @@ export const Game20221222: Game = {
   winnerId: 0,
   firstReligion: 1,
   firstWar: 1,
-  firstWonder: 0,
+  firstWonder: 3,
   firstTakenCity: 1,
-  closed: 0,
+  closed: 1,
   categories: [
     {
       id: 1,

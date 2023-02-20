@@ -25,12 +25,12 @@ export const Game20230103: Game = {
       leader: 'Suleiman'
 }
   ],
-  winnerId: 0,
+  winnerId: 1,
   firstReligion: 2,
   firstWar: 3,
   firstWonder: 6,
   firstTakenCity: 3,
-  closed: 0,
+  closed: 1,
   categories: [
     {
       id: 1,
@@ -42,11 +42,11 @@ export const Game20230103: Game = {
         },
         {
           playerId: 2,
-          position: 1
+          position: 2
         },
         {
           playerId: 3,
-          position: 3
+          position: 4
         },
         {
           playerId: 6,
@@ -61,7 +61,7 @@ export const Game20230103: Game = {
       positions: [
         {
           playerId: 1,
-          position: 1
+          position: 2
         },
         {
           playerId: 2,
@@ -69,7 +69,7 @@ export const Game20230103: Game = {
         },
         {
           playerId: 3,
-          position: 3
+          position: 4
         },
         {
           playerId: 6,
@@ -117,7 +117,7 @@ export const Game20230103: Game = {
         },
         {
           playerId: 6,
-          position: 3
+          position: 2
         }
       ]
     },
@@ -135,11 +135,11 @@ export const Game20230103: Game = {
         },
         {
           playerId: 3,
-          position: 3
+          position: 4
         },
         {
           playerId: 6,
-          position: 4
+          position: 3
         }
       ]
     },
@@ -153,7 +153,7 @@ export const Game20230103: Game = {
         },
         {
           playerId: 2,
-          position: 1
+          position: 3
         },
         {
           playerId: 3,
@@ -161,7 +161,7 @@ export const Game20230103: Game = {
         },
         {
           playerId: 6,
-          position: 3
+          position: 1
         }
       ]
     },
@@ -171,11 +171,11 @@ export const Game20230103: Game = {
       positions: [
         {
           playerId: 1,
-          position: 2
+          position: 1
         },
         {
           playerId: 2,
-          position: 1
+          position: 2
         },
         {
           playerId: 3,
