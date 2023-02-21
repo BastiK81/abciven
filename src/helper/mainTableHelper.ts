@@ -2,6 +2,7 @@ import { PlayerList } from "../data/PlayerList";
 import { Category, Game, PlayerType, PlayerStats, ScoreInCategory } from "../types/mainTypes";
 import { GameList } from "../data/GameList";
 import { CategoryId } from "./MainSettingEnums";
+import { categoryScore, categoryScoreDecreaseFactor, firstPlayerScore, winnerScore } from "../data/MainSettings";
 
 const players = PlayerList;
 
@@ -37,15 +38,15 @@ export const calculateScoreValue = ( playerPositionInScore: number, numberOfPlay
   }
   switch ( playerPositionInScore + numberOfPlayerWithPosition - 1 ) {
     case 1:
-      return 5;
+      return categoryScore;
     case 2:
-      return 4;
+      return categoryScore - 1 * categoryScoreDecreaseFactor;
     case 3:
-      return 3;
+      return categoryScore - 2 * categoryScoreDecreaseFactor;
     case 4:
-      return 2;
+      return categoryScore - 3 * categoryScoreDecreaseFactor;
     case 5:
-      return 1;
+      return categoryScore - 4 * categoryScoreDecreaseFactor;
     default:
       return 0;
   }
@@ -62,7 +63,7 @@ function calculateTotalScore( playerStats: PlayerStats ) {
     ( playerStats.firstWar / playerStats.gamesCount ) +
     ( playerStats.firstReligion / playerStats.gamesCount ) +
     ( playerStats.firstWonder / playerStats.gamesCount );
-  for ( let i = 0; i < playerStats.scoreInCategories.length - 1; i++ ) {
+  for ( let i = 0; i < playerStats.scoreInCategories.length; i++ ) {
     const scoreInCategory = playerStats.scoreInCategories[i];
     totalScore = totalScore + scoreInCategory.score / scoreInCategory.count;
   }
@@ -83,19 +84,19 @@ export const getGamesByTrigger = ( trigger: string ): Game[] => {
 function setStaticPoints( calculatedPlayerStats: PlayerStats, game: Game ) {
   calculatedPlayerStats.gamesCount++;
   if ( game.winnerId === calculatedPlayerStats.id ) {
-    calculatedPlayerStats.wins += 5;
+    calculatedPlayerStats.wins += winnerScore;
   }
   if ( game.firstReligion === calculatedPlayerStats.id ) {
-    calculatedPlayerStats.firstReligion += 2;
+    calculatedPlayerStats.firstReligion += firstPlayerScore;
   }
   if ( game.firstWar === calculatedPlayerStats.id ) {
-    calculatedPlayerStats.firstWar += 2;
+    calculatedPlayerStats.firstWar += firstPlayerScore;
   }
   if ( game.firstTakenCity === calculatedPlayerStats.id ) {
-    calculatedPlayerStats.firstConquest += 2;
+    calculatedPlayerStats.firstConquest += firstPlayerScore;
   }
   if ( game.firstWonder === calculatedPlayerStats.id ) {
-    calculatedPlayerStats.firstWonder += 2;
+    calculatedPlayerStats.firstWonder += firstPlayerScore;
   }
   return calculatedPlayerStats;
 }
@@ -137,8 +138,8 @@ export const calculatePlayerStats = ( games: Game[] ): PlayerStats[] => {
           calculatedPlayerStats.scoreInCategories = calculatedScoreInCategories;
         }
       }
-      calculatedPlayerStats.totalScore = calculateTotalScore( calculatedPlayerStats );
     }
+    calculatedPlayerStats.totalScore = calculateTotalScore( calculatedPlayerStats );
     calculatedStats.push( calculatedPlayerStats )
   }
   return calculatedStats;

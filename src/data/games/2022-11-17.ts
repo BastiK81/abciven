@@ -4,6 +4,12 @@ import { CategoryId } from "../../helper/MainSettingEnums";
 export const Game20221117: Game = {
   id: 1,
   date: [ 2022, 11, 17 ],
+  winnerId: 0,
+  firstReligion: 1,
+  firstWar: 2,
+  firstTakenCity: 2,
+  firstWonder: 1,
+  closed: 1,
   players: [
     {
       id: 1,
@@ -52,11 +58,11 @@ export const Game20221117: Game = {
         },
         {
           playerId: 5,
-          position: 0
+          position: 6
         },
         {
           playerId: 6,
-          position: 0
+          position: 6
         }
       ]
     },
@@ -81,11 +87,11 @@ export const Game20221117: Game = {
         },
         {
           playerId: 5,
-          position: 0
+          position: 6
         },
         {
           playerId: 6,
-          position: 0
+          position: 6
         }
 
       ]
@@ -111,11 +117,11 @@ export const Game20221117: Game = {
         },
         {
           playerId: 5,
-          position: 0
+          position: 6
         },
         {
           playerId: 6,
-          position: 0
+          position: 6
         }
       ]
     },
@@ -140,11 +146,11 @@ export const Game20221117: Game = {
         },
         {
           playerId: 5,
-          position: 0
+          position: 6
         },
         {
           playerId: 6,
-          position: 0
+          position: 6
         }
       ]
     },
@@ -153,27 +159,27 @@ export const Game20221117: Game = {
       positions: [
         {
           playerId: 1,
-          position: 0
+          position: 1
         },
         {
           playerId: 2,
-          position: 0
+          position: 1
         },
         {
           playerId: 3,
-          position: 0
+          position: 1
         },
         {
           playerId: 4,
-          position: 0
+          position: 1
         },
         {
           playerId: 5,
-          position: 0
+          position: 1
         },
         {
           playerId: 6,
-          position: 0
+          position: 1
         }
       ]
     },
@@ -182,27 +188,27 @@ export const Game20221117: Game = {
       positions: [
         {
           playerId: 1,
-          position: 0
+          position: 1
         },
         {
           playerId: 2,
-          position: 0
+          position: 1
         },
         {
           playerId: 3,
-          position: 0
+          position: 1
         },
         {
           playerId: 4,
-          position: 0
+          position: 1
         },
         {
           playerId: 5,
-          position: 0
+          position: 1
         },
         {
           playerId: 6,
-          position: 0
+          position: 1
         }
       ]
     },
@@ -227,19 +233,13 @@ export const Game20221117: Game = {
         },
         {
           playerId: 5,
-          position: 0
+          position: 6
         },
         {
           playerId: 6,
-          position: 0
+          position: 6
         }
       ]
     }
-  ],
-  winnerId: 0,
-  firstReligion: 1,
-  firstWar: 2,
-  firstTakenCity: 2,
-  firstWonder: 1,
-  closed: 1,
+  ]
 }

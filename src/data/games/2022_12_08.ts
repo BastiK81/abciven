@@ -4,6 +4,12 @@ import { CategoryId } from "../../helper/MainSettingEnums";
 export const Game20221208: Game = {
   id: 2,
   date: [ 2022, 12, 8 ],
+  winnerId: 0,
+  firstWonder: 0,
+  firstReligion: 3,
+  firstWar: 0,
+  firstTakenCity: 0,
+  closed: 0,
   players: [
     {
       id: 1,
@@ -26,12 +32,6 @@ export const Game20221208: Game = {
       leader: 14
     }
   ],
-  winnerId: 0,
-  firstWonder: 0,
-  firstReligion: 3,
-  firstWar: 0,
-  firstTakenCity: 0,
-  closed: 0,
   categories: [
     {
       id: CategoryId.Technology,
@@ -164,23 +164,23 @@ export const Game20221208: Game = {
       positions: [
         {
           playerId: 1,
-          position: 0
+          position: 1
         },
         {
           playerId: 2,
-          position: 0
+          position: 1
         },
         {
           playerId: 3,
-          position: 0
+          position: 1
         },
         {
           playerId: 5,
-          position: 0
+          position: 1
         },
         {
           playerId: 6,
-          position: 0
+          position: 1
         }
       ]
     },
