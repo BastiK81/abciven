@@ -1,4 +1,5 @@
 import { Game } from "../../types/mainTypes";
+import { CategoryId } from "../../helper/MainSettingEnums";
 
 export const Game20230203: Game = {
   id: 5,
@@ -6,28 +7,23 @@ export const Game20230203: Game = {
   players: [
     {
       id: 1,
-      civ: 'Großcolumbianisches Reich',
-      leader: 'Simon Bolivar'
+      leader: 22
     },
     {
       id: 2,
-      civ: 'Arabisches Reich',
-      leader: 'Saladin Sultan'
+      leader: 24
     },
     {
       id: 3,
-      civ: '',
-      leader: ''
+      leader: 25
     },
     {
       id: 4,
-      civ: 'Ungarisches Reich',
-      leader: 'Matthias Corvinus'
+      leader: 23
     },
     {
       id: 6,
-      civ: '',
-      leader: ''
+      leader: 0
     }
   ],
   winnerId: 0,
@@ -38,8 +34,7 @@ export const Game20230203: Game = {
   closed: 0,
   categories: [
     {
-      id: 1,
-      name: 'Kultur',
+      id: CategoryId.Technology,
       positions: [
         {
           playerId: 1,
@@ -64,8 +59,7 @@ export const Game20230203: Game = {
       ]
     },
     {
-      id: 2,
-      name: 'Glaube',
+      id: CategoryId.Culture,
       positions: [
         {
           playerId: 1,
@@ -90,8 +84,7 @@ export const Game20230203: Game = {
       ]
     },
     {
-      id: 3,
-      name: 'Herrschaft',
+      id: CategoryId.Faith,
       positions: [
         {
           playerId: 1,
@@ -116,8 +109,7 @@ export const Game20230203: Game = {
       ]
     },
     {
-      id: 4,
-      name: 'Technologie',
+      id: CategoryId.Military,
       positions: [
         {
           playerId: 1,
@@ -142,8 +134,7 @@ export const Game20230203: Game = {
       ]
     },
     {
-      id: 5,
-      name: 'Punkte',
+      id: CategoryId.Territory,
       positions: [
         {
           playerId: 1,
@@ -168,8 +159,7 @@ export const Game20230203: Game = {
       ]
     },
     {
-      id: 6,
-      name: 'Territorium',
+      id: CategoryId.Diplomacy,
       positions: [
         {
           playerId: 1,
@@ -194,8 +184,7 @@ export const Game20230203: Game = {
       ]
     },
     {
-      id: 7,
-      name: 'Diplomatie',
+      id: CategoryId.Score,
       positions: [
         {
           playerId: 1,
@@ -218,6 +207,6 @@ export const Game20230203: Game = {
           position: 3
         }
       ]
-    },
+    }
   ]
 }

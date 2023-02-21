@@ -1,10 +1,11 @@
 import { PlayerList } from "../data/PlayerList";
-import { Category, Game, Player, PlayerStats, ScoreInCategory } from "../types/mainTypes";
+import { Category, Game, PlayerType, PlayerStats, ScoreInCategory } from "../types/mainTypes";
 import { GameList } from "../data/GameList";
+import { CategoryId } from "./MainSettingEnums";
 
 const players = PlayerList;
 
-export const getAverageScoreById = ( scoreInCategories: ScoreInCategory[], number: number ) => {
+export const getAverageScoreById = ( scoreInCategories: ScoreInCategory[], number: CategoryId ) => {
   const scoreItem: ScoreInCategory = scoreInCategories.filter( ( score ) => score.id === number )[0]
   if ( scoreItem ) {
     return ( scoreItem.score / scoreItem.count ).toFixed( 2 );
@@ -12,7 +13,7 @@ export const getAverageScoreById = ( scoreInCategories: ScoreInCategory[], numbe
   return 0;
 }
 
-const emptyPlayerStats = ( player: Player ): PlayerStats => {
+const emptyPlayerStats = ( player: PlayerType ): PlayerStats => {
   return {
     name: player.name,
     id: player.id,
@@ -50,7 +51,7 @@ export const calculateScoreValue = ( playerPositionInScore: number, numberOfPlay
   }
 }
 
-function playerIsInGame( player: Player, game: Game ) {
+function playerIsInGame( player: PlayerType, game: Game ) {
   return game.players.some( ( gamePlayer ) => gamePlayer.id === player.id );
 }
 
@@ -115,8 +116,8 @@ export const calculatePlayerStats = ( games: Game[] ): PlayerStats[] => {
         for ( let k = 0; k < game.categories.length; k++ ) {
           const category: Category = game.categories[k];
 
-          const playerPositionInCategory = category.positions.filter( ( position ) => position.playerId === player.id )[0].position;
-          const numberOfPlayerWithPosition = category.positions.filter( ( position ) => position.position === playerPositionInCategory ).length;
+          const playerPositionInCategory: number = category.positions.filter( ( position ) => position.playerId === player.id )[0].position;
+          const numberOfPlayerWithPosition: number = category.positions.filter( ( position ) => position.position === playerPositionInCategory ).length;
           const categoryScoreValue = calculateScoreValue( playerPositionInCategory, numberOfPlayerWithPosition );
 
           const presentCalculatedScoreInCategory = calculatedScoreInCategories.filter( ( scoreInCategory ) => scoreInCategory.id === category.id )[0];
@@ -127,7 +128,7 @@ export const calculatePlayerStats = ( games: Game[] ): PlayerStats[] => {
           else {
             const playerScoreInCategory: ScoreInCategory = {
               score: categoryScoreValue,
-              name: category.name,
+              name: category.id.toString(),
               id: category.id,
               count: 1,
             }

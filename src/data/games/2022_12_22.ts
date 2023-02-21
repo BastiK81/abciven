@@ -1,4 +1,5 @@
 import { Game } from "../../types/mainTypes";
+import { CategoryId } from "../../helper/MainSettingEnums";
 
 export const Game20221222: Game = {
   id: 3,
@@ -6,28 +7,23 @@ export const Game20221222: Game = {
   players: [
     {
       id: 1,
-      civ: 'Nubien',
-      leader: 'Amanitore'
+      leader: 17
     },
     {
       id: 2,
-      civ: 'Schottland',
-      leader: 'Robert the Bruce'
+      leader: 4
     },
     {
       id: 6,
-      civ: 'Römisches Reich',
-      leader: 'Trajan'
+      leader: 11
     },
     {
       id: 3,
-      civ: 'China',
-      leader: 'Kublai Khan'
+      leader: 15
     },
     {
       id: 4,
-      civ: 'Kongo',
-      leader: 'Mvemba a Nzinga'
+      leader: 16
     }
   ],
   winnerId: 0,
@@ -38,8 +34,32 @@ export const Game20221222: Game = {
   closed: 1,
   categories: [
     {
-      id: 1,
-      name: 'Kultur',
+      id: CategoryId.Technology,
+      positions: [
+        {
+          playerId: 1,
+          position: 3
+        },
+        {
+          playerId: 2,
+          position: 5
+        },
+        {
+          playerId: 3,
+          position: 2
+        },
+        {
+          playerId: 4,
+          position: 4
+        },
+        {
+          playerId: 6,
+          position: 1
+        }
+      ]
+    },
+    {
+      id: CategoryId.Culture,
       positions: [
         {
           playerId: 1,
@@ -65,8 +85,7 @@ export const Game20221222: Game = {
       ]
     },
     {
-      id: 2,
-      name: 'Glaube',
+      id: CategoryId.Faith,
       positions: [
         {
           playerId: 1,
@@ -91,8 +110,7 @@ export const Game20221222: Game = {
       ]
     },
     {
-      id: 3,
-      name: 'Herrschaft',
+      id: CategoryId.Military,
       positions: [
         {
           playerId: 1,
@@ -117,86 +135,7 @@ export const Game20221222: Game = {
       ]
     },
     {
-      id: 4,
-      name: 'Technologie',
-      positions: [
-        {
-          playerId: 1,
-          position: 3
-        },
-        {
-          playerId: 2,
-          position: 5
-        },
-        {
-          playerId: 3,
-          position: 2
-        },
-        {
-          playerId: 4,
-          position: 4
-        },
-        {
-          playerId: 6,
-          position: 1
-        }
-      ]
-    },
-    {
-      id: 5,
-      name: 'Punkte',
-      positions: [
-        {
-          playerId: 1,
-          position: 1
-        },
-        {
-          playerId: 2,
-          position: 5
-        },
-        {
-          playerId: 3,
-          position: 2
-        },
-        {
-          playerId: 4,
-          position: 4
-        },
-        {
-          playerId: 6,
-          position: 3
-        }
-      ]
-    },
-    {
-      id: 7,
-      name: 'Diplomatie',
-      positions: [
-        {
-          playerId: 1,
-          position: 3
-        },
-        {
-          playerId: 2,
-          position: 3
-        },
-        {
-          playerId: 3,
-          position: 2
-        },
-        {
-          playerId: 4,
-          position: 2
-        },
-        {
-          playerId: 6,
-          position: 1
-        }
-      ]
-    },
-    {
-      id: 6,
-      name: 'Territorium',
+      id: CategoryId.Territory,
       positions: [
         {
           playerId: 1,
@@ -217,6 +156,56 @@ export const Game20221222: Game = {
         {
           playerId: 6,
           position: 2
+        }
+      ]
+    },
+    {
+      id: CategoryId.Diplomacy,
+      positions: [
+        {
+          playerId: 1,
+          position: 3
+        },
+        {
+          playerId: 2,
+          position: 3
+        },
+        {
+          playerId: 3,
+          position: 2
+        },
+        {
+          playerId: 4,
+          position: 2
+        },
+        {
+          playerId: 6,
+          position: 1
+        }
+      ]
+    },
+    {
+      id: CategoryId.Score,
+      positions: [
+        {
+          playerId: 1,
+          position: 1
+        },
+        {
+          playerId: 2,
+          position: 5
+        },
+        {
+          playerId: 3,
+          position: 2
+        },
+        {
+          playerId: 4,
+          position: 4
+        },
+        {
+          playerId: 6,
+          position: 3
         }
       ]
     }

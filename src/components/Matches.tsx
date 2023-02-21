@@ -1,34 +1,38 @@
 import { bestPlayerInGame } from "../helper/tableHelper";
 import * as React from "react";
 import { useState } from "react";
-import { InGamePlayers } from "../types/mainTypes";
-import GameListTable from "./GameListTable";
+import { Game, InGamePlayers } from "../types/mainTypes";
+import GameListTableBody from "./GameListTable";
 import RadioButtonGameChoice from "./RadioButtonGameChoice";
 import { getGamesByTrigger } from "../helper/mainTableHelper";
 import MainGameTable from "./MainGameTable";
+import { Table, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { categoryOrder } from "../helper/MainSettingEnums";
 
 const Matches = () => {
 
-  const [ openGameId, setOpenGameId ] = useState<number>(0);
-  const [ openTable, setOpenTable ] = useState(false);
-  const [ valueRadioButton, setValueRadioButton ] = React.useState('all');
+  const [ openGame, setOpenGame ] = useState<Game>( {} as Game );
+  const [ openTable, setOpenTable ] = useState( false );
+  const [ valueRadioButton, setValueRadioButton ] = React.useState( 'all' );
 
-  const handleChangeRadioButton = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValueRadioButton((event.target as HTMLInputElement).value);
+  const handleChangeRadioButton = ( event: React.ChangeEvent<HTMLInputElement> ) => {
+    setValueRadioButton( ( event.target as HTMLInputElement ).value );
   };
 
-  const handleOpenTable = (gameId: number) => {
-    setOpenTable((prev) => !prev);
+  const handleOpenTable = () => {
+    setOpenTable( ( prev ) => !prev );
   }
 
-  const games = getGamesByTrigger(valueRadioButton);
+  const games = getGamesByTrigger( valueRadioButton );
 
-  function handleChange(id: number) {
-    if ( openGameId === id ) {
-      setOpenGameId(0);
-      setOpenTable(false);
-    } else {
-      setOpenGameId(id);
+  function handleChange( game: Game ) {
+    if ( openGame.id === game.id ) {
+      setOpenGame( {} as Game );
+      setOpenTable( false );
+    }
+    else {
+      setOpenGame( game );
+      setOpenTable( true );
     }
   }
 
@@ -41,31 +45,45 @@ const Matches = () => {
         handleChange={ handleChangeRadioButton }
         key={ 'radioButton' }
       />
-
-      { games.sort((a, b) => b.closed - a.closed).map((game) => {
-        const bestPlayer: InGamePlayers = bestPlayerInGame(game);
-        return (
-          <div key={ 'game' + game.id }>
-            <GameListTable
-              key={ game.id + 'gameListTable' }
-              game={ game }
-              bestPlayer={ bestPlayer }
-              openGameId={ openGameId }
-              handleChange={ handleChange }
-              handleOpenTable={ handleOpenTable }
-              openTable={ openTable }
-            />
-            {
-              openGameId === game.id && openTable ? (
-                <MainGameTable
-                  games={ [ game ] }
-                  key={game.id + 'gameTable'}
+      <div key={ 'game' }>
+        <TableContainer>
+          <Table size={ "small" }>
+            <TableHead key={ `tableHeader` }>
+              <TableRow key={ 'headerRow' }>
+                <TableCell key={ 'headerCell' }></TableCell>
+                <TableCell key={ 'headerPlayer' }>Spieler</TableCell>
+                <TableCell key={ 'headerLeader' }>Oberhaupt</TableCell>
+                <TableCell key={ 'headerCiv' }>Civ</TableCell>
+                { categoryOrder.map( ( category ) => (
+                  <TableCell key={ 'header' + category }>{ category }</TableCell>
+                ) ) }
+              </TableRow>
+            </TableHead>
+            { games.sort( ( a, b ) => b.closed - a.closed ).map( ( game ) => {
+              const bestPlayer: InGamePlayers = bestPlayerInGame( game );
+              return (
+                <GameListTableBody
+                  key={ game.id + 'gameListTable' }
+                  game={ game }
+                  bestPlayer={ bestPlayer }
+                  openGame={ openGame }
+                  handleChange={ handleChange }
+                  handleOpenTable={ handleOpenTable }
+                  openTable={ openTable }
                 />
-              ) : (null)
-            }
-          </div>
-        );
-      }) }
+              )
+            } ) }
+          </Table>
+        </TableContainer>
+        {
+          openTable ? (
+            <MainGameTable
+              games={ [ openGame ] }
+              key={ openGame.id + 'gameTable' }
+            />
+          ) : null
+        }
+      </div>
     </div>
   );
 };

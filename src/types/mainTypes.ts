@@ -1,4 +1,7 @@
-export type Player = {
+import { CategoryId } from "../helper/MainSettingEnums";
+import { LeaderType } from "../data/LeaderList";
+
+export type PlayerType = {
   id: number;
   name: string;
 }
@@ -11,8 +14,7 @@ export type Title = {
 
 export type InGamePlayers = {
   id: number;
-  leader: string;
-  civ: string;
+  leader: number;
 }
 
 export type Position = {
@@ -21,8 +23,7 @@ export type Position = {
 }
 
 export type Category = {
-  id: number;
-  name: string;
+  id: CategoryId;
   positions: Position[];
 }
 
@@ -40,7 +41,7 @@ export type Game = {
 }
 
 export type ScoreInCategory = {
-  id: number;
+  id: CategoryId;
   name: string;
   score: number;
   count: number;

@@ -1,7 +1,7 @@
-import { Player } from "../types/mainTypes";
+import { PlayerType } from "../types/mainTypes";
 
 
-export const PlayerList: Player[] = [
+export const PlayerList: PlayerType[] = [
   {
     id: 1,
     name: 'BastiK',

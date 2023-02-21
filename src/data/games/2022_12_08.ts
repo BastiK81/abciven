@@ -1,4 +1,5 @@
 import { Game } from "../../types/mainTypes";
+import { CategoryId } from "../../helper/MainSettingEnums";
 
 export const Game20221208: Game = {
   id: 2,
@@ -6,28 +7,23 @@ export const Game20221208: Game = {
   players: [
     {
       id: 1,
-      civ: 'Inka',
-      leader: 'Pachacutec'
+      leader: 10
     },
     {
       id: 2,
-      civ: 'Römisches Reich',
-      leader: 'Trajan'
+      leader: 11
     },
     {
       id: 6,
-      civ: 'Korea',
-      leader: 'Seondeok'
+      leader: 12
     },
     {
       id: 3,
-      civ: 'Arabien',
-      leader: 'Saladin (Sultan)'
+      leader: 13
     },
     {
       id: 5,
-      civ: 'Griechenland',
-      leader: 'Gorgo'
+      leader: 14
     }
   ],
   winnerId: 0,
@@ -38,8 +34,32 @@ export const Game20221208: Game = {
   closed: 0,
   categories: [
     {
-      id: 1,
-      name: 'Kultur',
+      id: CategoryId.Technology,
+      positions: [
+        {
+          playerId: 1,
+          position: 4
+        },
+        {
+          playerId: 2,
+          position: 3
+        },
+        {
+          playerId: 3,
+          position: 1
+        },
+        {
+          playerId: 5,
+          position: 5
+        },
+        {
+          playerId: 6,
+          position: 2
+        }
+      ]
+    },
+    {
+      id: CategoryId.Culture,
       positions: [
         {
           playerId: 1,
@@ -65,8 +85,7 @@ export const Game20221208: Game = {
       ]
     },
     {
-      id: 2,
-      name: 'Glaube',
+      id: CategoryId.Faith,
       positions: [
         {
           playerId: 1,
@@ -91,8 +110,7 @@ export const Game20221208: Game = {
       ]
     },
     {
-      id: 3,
-      name: 'Herrschaft',
+      id: CategoryId.Military,
       positions: [
         {
           playerId: 1,
@@ -117,34 +135,7 @@ export const Game20221208: Game = {
       ]
     },
     {
-      id: 4,
-      name: 'Technologie',
-      positions: [
-        {
-          playerId: 1,
-          position: 4
-        },
-        {
-          playerId: 2,
-          position: 3
-        },
-        {
-          playerId: 3,
-          position: 1
-        },
-        {
-          playerId: 5,
-          position: 5
-        },
-        {
-          playerId: 6,
-          position: 2
-        }
-      ]
-    },
-    {
-      id: 5,
-      name: 'Punkte',
+      id: CategoryId.Territory,
       positions: [
         {
           playerId: 1,
@@ -169,8 +160,32 @@ export const Game20221208: Game = {
       ]
     },
     {
-      id: 6,
-      name: 'Territorium',
+      id: CategoryId.Diplomacy,
+      positions: [
+        {
+          playerId: 1,
+          position: 0
+        },
+        {
+          playerId: 2,
+          position: 0
+        },
+        {
+          playerId: 3,
+          position: 0
+        },
+        {
+          playerId: 5,
+          position: 0
+        },
+        {
+          playerId: 6,
+          position: 0
+        }
+      ]
+    },
+    {
+      id: CategoryId.Score,
       positions: [
         {
           playerId: 1,
