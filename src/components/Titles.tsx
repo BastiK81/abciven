@@ -32,24 +32,33 @@ import { Card, CardContent, CardHeader, Grid } from "@mui/material";
 const Titles = () => {
 
   return (
+    <>
+    <Grid container spacing={ 2 } padding={2} direction={"row"}>
+      <Grid item xl={ 6 }>
+        <h4>Sprint Erfolge</h4>
+      </Grid>
+      <Grid item xl={ 6 }>
+        <h4>Marathon Erfolge</h4>
+      </Grid>
+    </Grid>
       <Grid container spacing={ 2 } padding={2} direction={"row"}>
         <Grid item xl={ 3 }>
           <Card variant="outlined" >
-            <CardHeader title='Siege' />
+            <CardHeader title='Gewonnen Spiele' />
                 <CardContent>
                   <h2>{ getHighestWinnerTitle() }</h2>
                 <h3>{ getLastWinnerTitle() }</h3>
                 </CardContent>
           </Card>
           <Card variant="outlined">
-            <CardHeader title='Kriege' />
+            <CardHeader title='Erste Kriegserklärung' />
             <CardContent>
               <h2>{ getHighestWarManagerTitle() }</h2>
               <h3>{ getLastWarManagerTitle() }</h3>
             </CardContent>
           </Card>
           <Card variant="outlined">
-            <CardHeader title='Religion' />
+            <CardHeader title='Erste Religion' />
             <CardContent>
               <h2>{ getHighestReligiousTitle() }</h2>
               <h3>{ getLastReligiousTitle() }</h3>
@@ -58,14 +67,14 @@ const Titles = () => {
         </Grid>
         <Grid item xl={ 3 } >
           <Card variant="outlined">
-            <CardHeader title='Weltwunder' />
+            <CardHeader title='Erstes Weltwunder' />
             <CardContent>
               <h2>{ getHighestWonderTitle() }</h2>
               <h3>{ getLastWonderTitle() }</h3>
             </CardContent>
           </Card>
           <Card variant="outlined">
-            <CardHeader title='Eroberung' />
+            <CardHeader title='Erste Stadt Eroberung' />
             <CardContent>
               <h2>{ getHighestEmperorTitle() }</h2>
               <h3>{ getLastEmperorTitle() }</h3>
@@ -126,6 +135,8 @@ const Titles = () => {
           </Card>
         </Grid>
       </Grid>
+    </>
+
   );
 }
 

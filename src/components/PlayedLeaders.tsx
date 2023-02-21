@@ -88,6 +88,7 @@ const PlayedLeaders = ( props: PlayedNationsProps) => {
                   </TableRow>
                 );
               }
+              return null;
             })
             }
           </TableBody>
