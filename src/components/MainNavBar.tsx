@@ -7,6 +7,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import PlayedLeaders from "./PlayedLeaders";
 
 
 type Pages = {
@@ -26,7 +27,12 @@ const pages: Pages[] = [
   {
     name: 'Tabelle',
     state: 3
-  } ];
+  },
+  {
+    name: 'Gespielte Civs',
+    state: 4
+  }
+];
 
 const MainNavBAr = () => {
 
@@ -60,8 +66,14 @@ const MainNavBAr = () => {
         return <MainTable
           key={ 'mainTable' }
         />
+      case 4:
+        return <PlayedLeaders
+          key={ 'playedNations' }
+        />
       default:
-        return <>Nothing</>
+        return <Titles
+          key={ 'titles' }
+        />
     }
   }
 

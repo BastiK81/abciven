@@ -1,9 +1,10 @@
 import { Category, Game, InGamePlayers } from "../types/mainTypes";
 import { getPlayerById } from "./playerHelper";
 import { calculateScoreValue } from "./mainTableHelper";
+import { CategoryId } from "./MainSettingEnums";
 
 
-export const calculateScoreOfCategoryWithRank = ( categories: Category[], playerPosition: number, categoryId: number ) => {
+export const calculateScoreOfCategoryWithRank = ( categories: Category[], playerPosition: number, categoryId: CategoryId ) => {
   if ( playerPosition === 0 ) {
     return 0;
   }
@@ -14,7 +15,7 @@ export const calculateScoreOfCategoryWithRank = ( categories: Category[], player
   return 0;
 }
 
-export const readPositionOutOfCategory = ( playerId: number, categories: Category[], categoryId: number ) => {
+export const readPositionOutOfCategory = ( playerId: number, categories: Category[], categoryId: CategoryId ) => {
   const category = categories.find( ( category ) => category.id === categoryId );
   if ( category ) {
     const position = category.positions.find(
@@ -27,13 +28,13 @@ export const readPositionOutOfCategory = ( playerId: number, categories: Categor
   return 0;
 }
 
-export const generateCategoryValue = ( playerId: number, categories: Category[], categoryId: number ) => {
+export const generateCategoryValue = ( playerId: number, categories: Category[], categoryId: CategoryId ) => {
   const rankInCategory = readPositionOutOfCategory( playerId, categories, categoryId )
   const scoreInCategory = calculateScoreOfCategoryWithRank( categories, rankInCategory, categoryId );
   return `${ rankInCategory } / ${ scoreInCategory }`;
 }
 
-export const bestInScore = ( categories: Category[], id: number ): string => {
+export const bestInScore = ( categories: Category[], id: CategoryId ): string => {
   const positions = categories.filter( ( category ) => category.id === id )[0].positions
   if ( positions ) {
     const filteredPositions = positions.filter( ( position ) => position.position === 1 )
@@ -70,8 +71,7 @@ export const bestPlayerInGame = ( game: Game ): InGamePlayers => {
   }
   return {
     id: 0,
-    leader: "",
-    civ: ""
+    leader: 0,
   }
 }
 
